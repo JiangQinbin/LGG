@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lgg.upload.mapper.OrderManagementMapper">
+    <select id="quaryOrder" parameterType="java.lang.String" resultType="lgg.upload.model.NonghuOrder">
+       SELECT t.ordernumber, t.username,manguoname,guige,number,paymentTime,actualPayment,consigneeName,fullAddress,mobile,delivery,harvest
+       FROM theorder t,mangoattribute m,harvestaddress h WHERE shangjia=#{uoo} AND actualPayment>0 AND t.manguoID=m.manguoID
+       AND t.username=h.username AND t.addressSerialnumber=h.addressID ORDER BY paymentTime DESC;
+    </select>
+    <update id="orderUpdate" parameterType="java.lang.String">
+       UPDATE theorder SET  delivery=1 WHERE ordernumber=#{uoo};
+    </update>
+</mapper>

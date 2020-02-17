@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lgg.upload.mapper.GoodsMapper">
+    <select id="queryGoods" parameterType="java.lang.String" resultType="lgg.upload.model.MangoPrice">
+       SELECT * FROM mangoattribute WHERE username=#{uoo};
+    </select>
+    <delete id="deleteGoods" parameterType="java.lang.String">
+         DELETE FROM mangoattribute WHERE manguoID=#{uoo};
+    </delete>
+    <select id="queryGood" parameterType="java.lang.String" resultType="lgg.upload.model.MangoPrice">
+       SELECT * FROM mangoattribute WHERE manguoID=#{uoo};
+    </select>
+    <update id="updateGoods" parameterType="lgg.upload.model.MangoPrice">
+        UPDATE mangoattribute 
+        SET manguoname=#{manguoname},introduce=#{introduce},dapingjun=#{dapingjun},xiaopingjun=#{xiaopingjun},danjiadahao=#{danjiadahao},danjiadazhong=#{danjiadazhong},danjiaxiaohao=#{danjiaxiaohao},danjiaziaozhong=#{danjiaziaozhong},keshouliang=#{keshouliang} 
+        WHERE manguoID=#{manguoID};
+    </update>
+</mapper>
